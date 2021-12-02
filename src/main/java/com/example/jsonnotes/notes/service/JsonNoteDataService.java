@@ -39,7 +39,8 @@ public class JsonNoteDataService extends FileNoteDataService {
 
     @Override
     protected Note getNoteFromFileData(String fileData) {
-        return new Note(fileData);
+        var gson = new Gson();
+        return gson.fromJson(fileData, Note.class);
     }
 
     @Override
