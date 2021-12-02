@@ -1,5 +1,6 @@
 package com.example.jsonnotes.notes.service;
 
+import com.example.jsonnotes.notes.JsonNotesFile;
 import com.example.jsonnotes.notes.Note;
 import com.example.jsonnotes.util.NoteHelper;
 import com.google.gson.Gson;
@@ -52,8 +53,8 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
         }
         //Convert the string to a list of Notes
         var gson = new Gson();
-        var collectionType = new TypeToken<List<Note>>(){}.getType();
-        return gson.fromJson(fileData, collectionType);
+        var jsonNotes = gson.fromJson(fileData, JsonNotesFile.class);
+        return jsonNotes.getNotes();
     }
 
     @Override
@@ -67,6 +68,8 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
         }
         //Convert the list of Notes to a data string that can be saved to file
         var gson = new Gson();
-        return gson.toJson(notes);
+        var jsonNotes = new JsonNotesFile();
+        jsonNotes.setNotes(notes);
+        return gson.toJson(jsonNotes);
     }
 }
