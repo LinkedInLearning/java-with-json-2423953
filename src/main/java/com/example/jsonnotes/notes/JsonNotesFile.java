@@ -1,11 +1,9 @@
 package com.example.jsonnotes.notes;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonNotesFile {
 
@@ -16,6 +14,17 @@ public class JsonNotesFile {
     public JsonNotesFile() {}
 
     public List<Note> getNotes() {
+        var gson = new Gson();
+        var noteMap = new HashMap<String, Note>();
+        noteJsonStrings.forEach((key, value) -> {
+            try {
+                noteMap.put(key, gson.fromJson(value, Note.class));
+            } catch (JsonSyntaxException exception) {
+                System.out.printf("Error while deserializing the note with ID of %s/n", key);
+                noteMap.put(key, new Note(UUID.fromString(key), value));
+            }
+        });
+        this.notes = noteMap;
         return notes.values().stream().toList();
     }
 
