@@ -15,6 +15,16 @@ public class Note {
      */
     private String content = "";
 
+    private String summary = "";
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     /**
      * Create a new instance of a {@link Note} with a random ID and no content
      */
@@ -40,6 +50,12 @@ public class Note {
     public Note(UUID id, String content) {
         this.id = id.toString();
         this.content = content;
+    }
+
+    public Note(String content, String summary) {
+        this.id = UUID.randomUUID().toString();
+        this.content = content;
+        this.summary = summary;
     }
 
     /**
@@ -70,6 +86,7 @@ public class Note {
      */
     public void copyValues(Note note) {
         this.content = note.content;
+        this.summary = note.summary;
     }
 
     /**
