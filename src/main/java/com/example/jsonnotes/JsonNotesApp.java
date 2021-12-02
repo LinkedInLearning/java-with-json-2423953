@@ -1,10 +1,7 @@
 package com.example.jsonnotes;
 
-import com.example.jsonnotes.notes.service.CacheNoteDataService;
-import com.example.jsonnotes.notes.service.INoteDataService;
+import com.example.jsonnotes.notes.service.*;
 import com.example.jsonnotes.notes.Note;
-import com.example.jsonnotes.notes.service.JsonNoteDataService;
-import com.example.jsonnotes.notes.service.TextNoteDataService;
 import com.example.jsonnotes.util.NoteHelper;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -192,7 +189,7 @@ public class JsonNotesApp extends Application {
      */
     private void setNoteDirectory() {
         try {
-            noteDataService = JsonNoteDataService.getInstance(targetDirectory.getPath());
+            noteDataService = JsonFileNotesDataService.getInstance(targetDirectory.getPath());
         } catch (Exception exception) {
             exception.printStackTrace();
             System.out.println("There was an error while trying to create a note data service. Reverting to cache only.");

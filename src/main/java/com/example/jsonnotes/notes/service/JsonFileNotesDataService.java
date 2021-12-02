@@ -3,6 +3,7 @@ package com.example.jsonnotes.notes.service;
 import com.example.jsonnotes.notes.Note;
 import com.example.jsonnotes.util.NoteHelper;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,9 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
             return notes;
         }
         //Convert the string to a list of Notes
-        return NoteHelper.getNotesFromDataString(fileData);
+        var gson = new Gson();
+        var collectionType = new TypeToken<List<Note>>(){}.getType();
+        return gson.fromJson(fileData, collectionType);
     }
 
     @Override
