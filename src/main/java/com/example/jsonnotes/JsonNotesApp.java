@@ -234,7 +234,7 @@ public class JsonNotesApp extends Application {
         result.ifPresent(content -> {
             //The create button was pressed
             //Create a new note using the supplied content
-            var noteToCreate = new Note(content[0]);
+            var noteToCreate = new Note(content[0], content[1]);
             noteDataService.createNote(noteToCreate);
             refreshTableData();
         });
@@ -254,6 +254,7 @@ public class JsonNotesApp extends Application {
         result.ifPresent(content -> {
             //Update the note
             note.setContent(content[0]);
+            note.setSummary(content[1]);
             noteDataService.updateNote(note);
             refreshTableData();
         });
@@ -281,6 +282,10 @@ public class JsonNotesApp extends Application {
         grid.setVgap(8);
         grid.setHgap(8);
         //Add a field for Note content
+        var noteSummary = new TextField();
+        noteSummary.setPromptText("Briefly summarize the note");
+        grid.add(new Label("Summary:"), 0, 0);
+        grid.add(noteSummary, 1, 0);
         var noteContent = new TextArea();
         noteContent.setPromptText("Write something in the note...");
         grid.add(new Label("Content:"), 0, 1);
@@ -288,16 +293,18 @@ public class JsonNotesApp extends Application {
         //Fill values if there is a note available
         if (note != null) {
             noteContent.setText(note.getContent());
+            noteSummary.setText(note.getSummary());
         }
         //Set the dialog view content
         dialog.getDialogPane().setContent(grid);
         //Configure the dialog to set focus to the content field when the dialog is displayed
-        Platform.runLater(noteContent::requestFocus);
+        Platform.runLater(noteSummary::requestFocus);
         //Configure the result converter
         dialog.setResultConverter(button -> {
             if (button == positiveButton) {
                 return new String[] {
-                        noteContent.getText()
+                        noteContent.getText(),
+                        noteSummary.getText()
                 };
             }
             return null;
