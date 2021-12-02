@@ -15,6 +15,10 @@ public class JsonNotesFile {
     @SerializedName(value = "notes", alternate = {"noteJsonStrings"})
     private Map<String, String> noteJsonStrings = new HashMap<>();
 
+    @Expose
+    @SerializedName("writeDate")
+    private Date writeDate = Calendar.getInstance().getTime();
+
     public JsonNotesFile() {}
 
     public List<Note> getNotes() {
