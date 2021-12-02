@@ -2,6 +2,7 @@ package com.example.jsonnotes.notes;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.annotations.Expose;
 
 import java.util.*;
 
@@ -9,6 +10,7 @@ public class JsonNotesFile {
 
     private Map<String, Note> notes = new HashMap<>();
 
+    @Expose
     private Map<String, String> noteJsonStrings = new HashMap<>();
 
     public JsonNotesFile() {}

@@ -4,6 +4,7 @@ import com.example.jsonnotes.notes.JsonNotesFile;
 import com.example.jsonnotes.notes.Note;
 import com.example.jsonnotes.util.NoteHelper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -52,7 +53,9 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
             return notes;
         }
         //Convert the string to a list of Notes
-        var gson = new Gson();
+        var gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
         var jsonNotes = gson.fromJson(fileData, JsonNotesFile.class);
         return jsonNotes.getNotes();
     }
@@ -67,7 +70,9 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
             return noteString;
         }
         //Convert the list of Notes to a data string that can be saved to file
-        var gson = new Gson();
+        var gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
         var jsonNotes = new JsonNotesFile();
         jsonNotes.setNotes(notes);
         return gson.toJson(jsonNotes);
