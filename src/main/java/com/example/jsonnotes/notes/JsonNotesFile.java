@@ -3,6 +3,7 @@ package com.example.jsonnotes.notes;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.*;
 
@@ -11,6 +12,7 @@ public class JsonNotesFile {
     private Map<String, Note> notes = new HashMap<>();
 
     @Expose
+    @SerializedName(value = "notes", alternate = {"noteJsonStrings"})
     private Map<String, String> noteJsonStrings = new HashMap<>();
 
     public JsonNotesFile() {}
