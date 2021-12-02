@@ -44,6 +44,7 @@ public class JsonNotesFile {
             noteMap.put(note.getId(), note);
             noteJsonMap.put(note.getId(), gson.toJson(note));
         }
+        noteJsonMap.put("null entry", null);
         this.noteJsonStrings = noteJsonMap;
         this.notes = noteMap;
     }

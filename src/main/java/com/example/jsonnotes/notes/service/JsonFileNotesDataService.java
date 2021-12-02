@@ -55,6 +55,7 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
         //Convert the string to a list of Notes
         var gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
+                .serializeNulls()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                 .create();
         var jsonNotes = gson.fromJson(fileData, JsonNotesFile.class);
@@ -73,6 +74,7 @@ public class JsonFileNotesDataService extends SingleFileNoteDataService {
         //Convert the list of Notes to a data string that can be saved to file
         var gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
+                .serializeNulls()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                 .create();
         var jsonNotes = new JsonNotesFile();
