@@ -1,7 +1,10 @@
 # Java with JSON
-This is the repository for the LinkedIn Learning course `Java with JSON`. The full course is available from [LinkedIn Learning][lil-course-url].
+This is the repository for the LinkedIn Learning course Java with JSON. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
+![Java with JSON][lil-thumbnail-url] 
+
+JSON is often used as the encoding for data sent and received by web services, but it can also be used to store data in files and much more. Understanding how JSON works is crucial to building feature-rich applications and experiences. In this course, instructor Jon-Luke West goes over the use of data serialization/deserialization, the way JSON acts as the format, the syntax of JSON, how to read and write JSON in an application, and additional ways you can control the way data is handled. Jon-Luke begins with JSON basics, such as data interchange formats, primitives, and reading and writing JSON. He walks you through a simple JSON implementation, then shows you how to work with arrays. Plus, Jon-Luke covers additional formatting and customization options, like writing, reading, and testing nested JSON, as well as selecting fields to expose, handling null values, and much more.
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
@@ -20,15 +23,16 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
 
+### Instructor
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+Jon-Luke West 
+                            
+Product Engineer
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+                            
 
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/jon-luke-west).
+
+[lil-course-url]: https://www.linkedin.com/learning/java-with-json
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2423953/2423953-1643045935854-16x9.jpg
